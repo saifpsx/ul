@@ -1,6 +1,4 @@
 
-
-<script>
 const slider = document.querySelector('.categories-style-1');
 
 let isDown = false;
@@ -37,11 +35,7 @@ slider.addEventListener('pointermove', (e) => {
 });
 
 
-</script>
 
-
- 
-<script>
 $(document).ready(function(){
   // إزالة slick إذا كان مهيأ مسبقاً (احتياطاً)
   if ($('.products-slider').hasClass('slick-initialized')) {
@@ -83,16 +77,174 @@ $(document).ready(function(){
     ]
   });
 });
-</script>
+
+
+// يمكنك إضافة تأثيرات إضافية هنا باستخدام JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // مثال على تأثير بسيط لإظهار النص تدريجيًا
+    const promoText = document.querySelector('.promo-text');
+    promoText.style.opacity = '0';
+    promoText.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+        promoText.style.transition = 'opacity 1s, transform 1s';
+        promoText.style.opacity = '1';
+        promoText.style.transform = 'translateY(0)';
+    }, 500);
+});
 
 
 
 
+
+
+
+// الحصول على URL الحالي
+const currentURL = window.location.href;
+
+// التحقق إذا كان URL يحتوي على "/collections"
+if (currentURL.includes('/collections')) {
+    // إنشاء عنصر <style> لإضافة الأنماط
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        [dir] .category-item .category-thumbnail {
+            padding: inherit;
+            width: 100%;
+            height: 200px;
+            margin-inline: auto;
+        }
+
+        [dir] .category-item .category-thumbnail img {
+    height: 100%;
+}
+
+[dir] .category-item {
+    border: 0px solid #f0f0f0;
+    border-radius: 3px;
+    box-shadow: 0 0px 0px 0px #0000001a;
+    margin-inline: auto;
+    box-shadow: 0 5px 20px -10px #0000005e;
+    border-radius: 5%;
+}
+[dir=rtl] .category-item .category-thumbnail img {
+    border-radius: 0; 
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+
+/* القاعدة المخصصة للهواتف */
+@media (max-width: 768px) { /* استهداف الشاشات بعرض 768px أو أقل */
+     [dir] .category-item .category-thumbnail img {
+        height: 100%;
+    }
     
-    
-    
-    
-   <script>
+      [dir] .category-item .category-thumbnail {
+            padding: inherit;
+            width: 100%;
+            height: 100px;
+            margin-inline: auto;
+        }
+        
+        
+}
+
+    `;
+    // إضافة الأنماط إلى <head>
+    document.head.appendChild(styleElement);
+}
+
+
+
+
+
+jQuery(".products-slider").owlCarousel({
+  autoplay: true,
+  rewind: false, /* use rewind if you don't want loop */
+  margin: 20,
+  loop: true,
+   /*
+  animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
+  */
+  responsiveClass: true,
+  autoHeight: true,
+  autoplayTimeout: 7000,
+  smartSpeed: 800,
+  nav: true,
+  navText: [
+    '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>',
+    '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>'],
+  responsive: {
+    0: {
+      items: 1
+    },
+
+    600: {
+      items: 3
+    },
+
+    1024: {
+      items: 4
+    },
+
+    1366: {
+      items: 4
+    }
+  }
+});
+
+
+
+$('.products-slider slick-initialized slick-slider').slick({
+  // centerMode: true,
+  slidesToShow: 4,
+  dots: false,
+  arrows: true,
+  swipe: true,
+  swipeToSlide: true,
+
+   responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        centerMode: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        centerMode: true
+      }
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 3,
+      }
+    },
+  ]
+   
+});
+
+
+/*$('.slick-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  changecolor("white", 0);
+});
+$('.slick-slider').on('afterChange', function(event, slick, currentSlide, nextSlide){
+  changecolor("red", 30);
+});
+function changecolor(color, padding) { 
+  $('.slick-slider .slick-current').css("background-color", color);
+  $('.slick-slider .slick-current').css("padding", padding);
+  //$('.slick-slider').slick("setPosition");
+//  $('.slick-slider').slick('resize');
+}
+changecolor("red", 30);*/
+
+
 
 // GSAP Animation
 const marqueeText = document.querySelector(".marquee-text");
@@ -109,8 +261,6 @@ gsap.to(".marquee-text", {
 });
 
 
-</script>
- <script>
 
 // GSAP Animation
 const marqueeText = document.querySelector(".marquee-text2");
@@ -127,28 +277,19 @@ gsap.to(".marquee-text2", {
 });
 
 
-</script>
 
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-
-<script>
   (() => {
     const d=document,s=d.createElement("script");s.type="module";
     s.src="https://w.behold.so/widget.js";d.head.append(s);
   })();
-</script>
 
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-
-<script>
 document.addEventListener("DOMContentLoaded", () => {
   if (
     window.location.pathname !== "/" &&
@@ -352,13 +493,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-</script>
 
 
 
 
 
-<script>
+
 // تنفيذ حركة الجرس
 function triggerBellAnimation() {
     const whatsappButton = document.querySelector('.whatsapp');
@@ -405,9 +545,8 @@ setTimeout(() => {
 
 
 
-</script>
 
-<script>
+
 // إنشاء عناصر الإشعار ديناميكيًا
 const body = document.body;
 
@@ -699,9 +838,8 @@ setTimeout(showNotification, 5 * 60 * 1000);
 setTimeout(showNotification, 30 * 60 * 1000);
 setTimeout(showNotification, 35 * 60 * 1000);
 setTimeout(showNotification, 60 * 60 * 1000);
-</script>
 
-<script>
+
 document.addEventListener("DOMContentLoaded", function () {
   // استهداف جميع عناصر .product-item
   const productItems = document.querySelectorAll(".product-item");
@@ -735,13 +873,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-</script>
 
 
 
 
 
-<script>
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // استهداف جميع عناصر .product-item
   const productItems = document.querySelectorAll(".product-item");
@@ -770,62 +908,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-</script>
 
 
-
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-  ttq.load('CVCSF23C77U8JA3ILIOG');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-
-<script>
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 let answer = item.nextElementSibling;
                 answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
             });
         });
-    </script>
-    
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-  
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCBfAd31IbjPO-No3YC7Re7RXpIgMcMLJA",
-    authDomain: "ulsilvercom.firebaseapp.com",
-    projectId: "ulsilvercom",
-    storageBucket: "ulsilvercom.firebasestorage.app",
-    messagingSenderId: "906294168851",
-    appId: "1:906294168851:web:e51584b26e05d1cdba9ee6",
-    measurementId: "G-CJEVSV1PPZ"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  
-  
-  
-  
-</script>
-
+   
