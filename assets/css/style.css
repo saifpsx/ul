@@ -2,7 +2,10 @@
 [dir] .product-item .product-actions button.button.small-button.secondary-button {
     border: 1px solid #d0e4ff;
 }
-
+.slider-container .slide {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
 /* ✅ إضافة رمز السلة من خلال content */
 .button.small-button.secondary-button::before {
 
