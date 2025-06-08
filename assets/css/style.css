@@ -1,4 +1,12 @@
-
+@media (max-width: 768px) {
+    .slider-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+}
 [dir] .product-item .product-actions button.button.small-button.secondary-button {
     border: 1px solid #d0e4ff;
 }
